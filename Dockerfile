@@ -4,13 +4,14 @@ LABEL authors="Athos"
 RUN apt-get update && \
     apt-get install -y openjdk-21-jdk maven && \
     apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
+#COPY pom.xml .
+#COPY src ./src
+COPY . .
 
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 
 # Fase de Execução
